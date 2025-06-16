@@ -17,15 +17,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeBtn = overlay.querySelector("#terminal-close");
 
   overlay.style.display = "none";
-  iframe.src = btn.dataset.url || "https://terminal.example.dev";
+  const originalSrc = btn.dataset.url || "https://terminal.example.dev";
+  iframe.src = originalSrc;
 
   btn.addEventListener("click", function (e) {
     e.preventDefault();
+    if (!iframe.src) iframe.src = originalSrc;
     overlay.style.display = "block";
   });
 
   closeBtn.addEventListener("click", function () {
     overlay.style.display = "none";
+    iframe.src = ""; // reset session
   });
 
   const header = overlay.querySelector("#terminal-header");
@@ -43,9 +46,20 @@ document.addEventListener("DOMContentLoaded", function () {
     isDown = false;
     header.classList.remove("grabbing");
   });
+  let rafId = null;
+  let latestX = 0;
+  let latestY = 0;
+
   document.addEventListener("mousemove", function (e) {
     if (!isDown) return;
-    overlay.style.left = e.clientX + offsetX + "px";
-    overlay.style.top = e.clientY + offsetY + "px";
+    latestX = e.clientX + offsetX;
+    latestY = e.clientY + offsetY;
+    if (!rafId) {
+      rafId = requestAnimationFrame(function () {
+        overlay.style.left = latestX + "px";
+        overlay.style.top = latestY + "px";
+        rafId = null;
+      });
+    }
   });
 });
