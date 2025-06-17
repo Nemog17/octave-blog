@@ -8,7 +8,7 @@ toc: true
 readTime: true
 autonumber: true
 math: true
-tags: [""MATLAB", "gnuplot", "Cálculo", "Longitud de arco", "ASCII Art"]
+tags: ["MATLAB", "gnuplot", "Cálculo", "Longitud de arco", "ASCII Art"]
 showTags: false
 hideBackToTop: false
 fediverse: "@username@instance.url"
