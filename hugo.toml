@@ -34,6 +34,9 @@ paginationSize = 100
 listSummaries = true
 listDateFormat = '2 Jan 2006'
 
+# URL used for the floating terminal window
+terminalURL = 'https://terminal.example.dev'
+
 # Breadcrumbs
 [params.breadcrumbs]
 enabled = true
