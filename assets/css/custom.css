@@ -3,8 +3,9 @@
   position: fixed;
   top: 20px;
   left: 20px;
-  width: 600px;
-  height: 400px;
+  /* Sized to match the 98x28 character terminal */
+  width: 880px;
+  height: 460px;
   border: 1px solid #333;
   background: #111;
   z-index: 1000;
