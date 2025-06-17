@@ -35,4 +35,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function hide() {
     overlay.classList.remove("show");
-    overlay.classList.add("minimized"
+    overlay.classList.add("minimized");
+  }
+
+  overlay.addEventListener("transitionend", function () {
+    if (!overlay.classList.contains("show")) {
+      overlay.style.display = "none";
+      overlay.classList.remove("minimized");
+    }
+  });
+
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+    show();
+  });
+
+  closeBtn.addEventListener("click", hide);
+  if (minimizeBtn) {
+    minimizeBtn.addEventListener("click", hide);
+  }
+
+  const header = overlay.querySelector("#terminal-header");
+  let offsetX = 0;
+  let offsetY = 0;
+  let isDown = false;
+
+  header.addEventListener("pointerdown", function (e) {
+    isDown = true;
+    offsetX = overlay.offsetLeft - e.clientX;
+    offsetY = overlay.offsetTop - e.clientY;
+    header.classList.add("grabbing");
+    document.body.classList.add("no-select");
+  });
+  document.addEventListener("pointerup", function () {
+    isDown = false;
+    header.classList.remove("grabbing");
+    document.body.classList.remove("no-select");
+  });
+  document.addEventListener("pointermove", function (e) {
+    if (!isDown) return;
+    overlay.style.left = e.clientX + offsetX + "px";
+    overlay.style.top = e.clientY + offsetY + "px";
+  });
+});
