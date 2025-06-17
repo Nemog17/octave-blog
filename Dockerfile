@@ -18,4 +18,5 @@ COPY Longitud_Tuberia.m .
 
 EXPOSE 8080
 CMD ["gotty", "--permit-write", "--port", "8080", \
-      "bash", "-lc", "octave --persist Longitud_Tuberia.m 2>/dev/null"]
+     "--width", "98", "--height", "28", \
+     "bash", "-lc", "octave --persist Longitud_Tuberia.m 2>/dev/null"]

@@ -12,14 +12,14 @@ if a >= b, error('a debe ser < b'); end
 integrand   = @(x) sqrt(1 + (dy_dx(x)).^2);
 arc_length = integral(integrand, a, b);
 
-xv = linspace(a,b,80);
+xv = linspace(a,b,98);
 yv = y(xv);
 
 tmp = [tempname() '.dat'];
 dlmwrite(tmp, [xv' yv'], ' ');
 
 cmd = sprintf([
-    'gnuplot -e "set terminal dumb size 80,20; ', ...
+    'gnuplot -e "set terminal dumb size 98,28; ', ...
     'set title \\"y(x)=0.5x^2\\"; ', ...
     'plot ''%s'' using 1:2 with lines"'], tmp);
 
