@@ -17,11 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeBtn = overlay.querySelector("#terminal-close");
 
   overlay.style.display = "none";
-  iframe.src = btn.dataset.url || "https://docker-octave-test.happyisland-2e46231f.eastus.azurecontainerapps.io";
+  let iframeLoaded = false;
 
   btn.addEventListener("click", function (e) {
     e.preventDefault();
     overlay.style.display = "block";
+    if (!iframeLoaded) {
+      iframe.src = btn.dataset.url || "https://docker-octave-test.happyisland-2e46231f.eastus.azurecontainerapps.io";
+      iframeLoaded = true;
+    }
   });
 
   closeBtn.addEventListener("click", function () {
@@ -33,17 +37,21 @@ document.addEventListener("DOMContentLoaded", function () {
   let offsetY = 0;
   let isDown = false;
 
-  header.addEventListener("mousedown", function (e) {
+  header.addEventListener("pointerdown", function (e) {
     isDown = true;
     offsetX = overlay.offsetLeft - e.clientX;
     offsetY = overlay.offsetTop - e.clientY;
     header.classList.add("grabbing");
+    document.body.classList.add("no-select");
   });
-  document.addEventListener("mouseup", function () {
+
+  document.addEventListener("pointerup", function () {
     isDown = false;
     header.classList.remove("grabbing");
+    document.body.classList.remove("no-select");
   });
-  document.addEventListener("mousemove", function (e) {
+
+  document.addEventListener("pointermove", function (e) {
     if (!isDown) return;
     overlay.style.left = e.clientX + offsetX + "px";
     overlay.style.top = e.clientY + offsetY + "px";
