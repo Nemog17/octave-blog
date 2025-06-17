@@ -12,6 +12,19 @@
   display: none;
   resize: both;
   overflow: hidden;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+#terminal-window.show {
+  display: block;
+  transform: scale(1);
+  opacity: 1;
+}
+#terminal-window.minimized {
+  display: block;
+  transform: scale(0);
+  opacity: 0;
 }
 #terminal-window iframe {
   width: 100%;
@@ -35,6 +48,14 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
+}
+#terminal-minimize {
+  background: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 4px;
 }
 
 .terminal-button {

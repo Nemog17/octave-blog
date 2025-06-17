@@ -7,7 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
   overlay.innerHTML = `
     <div id="terminal-header">
       <span>Terminal</span>
-      <button id="terminal-close" aria-label="Close terminal">×</button>
+      <div>
+        <button id="terminal-minimize" aria-label="Minimize terminal">–</button>
+        <button id="terminal-close" aria-label="Close terminal">×</button>
+      </div>
     </div>
     <iframe id="terminal-iframe" src="" loading="lazy"></iframe>
   `;
@@ -15,18 +18,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const iframe = overlay.querySelector("#terminal-iframe");
   const closeBtn = overlay.querySelector("#terminal-close");
+  const minimizeBtn = overlay.querySelector("#terminal-minimize");
 
   overlay.style.display = "none";
   iframe.src = btn.dataset.url || "https://docker-octave-test.happyisland-2e46231f.eastus.azurecontainerapps.io";
 
-  btn.addEventListener("click", function (e) {
-    e.preventDefault();
+  function show() {
     overlay.style.display = "block";
+    overlay.classList.remove("minimized");
+    requestAnimationFrame(() => overlay.classList.add("show"));
+  }
+
+  function hide() {
+    overlay.classList.remove("show");
+    overlay.classList.add("minimized");
+  }
+
+  overlay.addEventListener("transitionend", function () {
+    if (!overlay.classList.contains("show")) {
+      overlay.style.display = "none";
+      overlay.classList.remove("minimized");
+    }
   });
 
-  closeBtn.addEventListener("click", function () {
-    overlay.style.display = "none";
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+    show();
   });
+
+  closeBtn.addEventListener("click", hide);
+  if (minimizeBtn) {
+    minimizeBtn.addEventListener("click", hide);
+  }
 
   const header = overlay.querySelector("#terminal-header");
   let offsetX = 0;
