@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeBtn = overlay.querySelector("#terminal-close");
 
   overlay.style.display = "none";
-  iframe.src = btn.dataset.url || "https://terminal.example.dev";
+  iframe.src = btn.dataset.url || "https://docker-octave-test.happyisland-2e46231f.eastus.azurecontainerapps.io";
 
   btn.addEventListener("click", function (e) {
     e.preventDefault();
