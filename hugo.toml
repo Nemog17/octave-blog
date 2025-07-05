@@ -35,7 +35,8 @@ listSummaries = true
 listDateFormat = '2 Jan 2006'
 
 # URL used for the floating terminal window
-terminalURL = 'https://docker-octave-test.happyisland-2e46231f.eastus.azurecontainerapps.io'
+# The value is taken from the environment variable `HUGO_TERMINAL_URL`.
+terminalURL = "$HUGO_TERMINAL_URL"
 
 # Breadcrumbs
 [params.breadcrumbs]
