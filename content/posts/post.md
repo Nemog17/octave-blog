@@ -12,7 +12,7 @@ tags: ["MATLAB", "gnuplot", "Cálculo", "Longitud de arco", "ASCII Art"]
 showTags: false
 hideBackToTop: false
 fediverse: "@username@instance.url"
-exercise: tuberia.m
+exercise: Longitud_Tuberia.m
 ---
 
 ¿Alguna vez te has preguntado cómo calcular la longitud de una tubería curva a partir de su función matemática? En este post exploraremos cómo hacerlo con MATLAB, utilizando gráficos en ASCII con `gnuplot` para una visualización directa desde la terminal.
