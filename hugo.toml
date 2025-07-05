@@ -37,7 +37,6 @@ listDateFormat = '2 Jan 2006'
 # URL used for the floating terminal window
 # The value is taken from the environment variable `HUGO_TERMINAL_URL`.
 terminalURL = "$HUGO_TERMINAL_URL"
-# terminalURL = 'https://octave-env.happyisland-2e46231f.eastus.azurecontainerapps.io/'
 
 # Breadcrumbs
 [params.breadcrumbs]

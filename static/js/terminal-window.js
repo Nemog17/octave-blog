@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function show() {
     overlay.style.display = "block";
     if (!iframeLoaded) {
-      iframe.src = btn.dataset.url || "https://docker-octave-test.happyisland-2e46231f.eastus.azurecontainerapps.io";
+      iframe.src = btn.dataset.url || "https://octave-env.happyisland-2e46231f.eastus.azurecontainerapps.io/";
       iframeLoaded = true;
     }
     overlay.classList.remove("minimized");
