@@ -51,10 +51,6 @@ name = "linkedin"
 url = "https://www.linkedin.com/in/user/"
 
 [[params.social]]
-name = "medium"
-url = "https://medium.com/@user"
-
-[[params.social]]
 name = "github"
 url = "https://github.com/user"
 
