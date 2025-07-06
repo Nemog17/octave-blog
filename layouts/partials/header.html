@@ -25,10 +25,12 @@
         {{ end }}
 
         {{ $terminalURL := site.Params.terminalURL }}
-        {{ if and $terminalURL (.Param "exercise") }}
+        {{ with .Param "exercise" }}
+        {{ if $terminalURL }}
         <p class="small">
-            <a href="#" id="terminal-button" class="terminal-button" data-url="{{ $terminalURL }}">/terminal</a>
+            <a href="#" id="terminal-button" class="terminal-button" data-url="{{ printf "%s/?arg=%s" $terminalURL . }}" data-auto-open="true">/terminal</a>
         </p>
+        {{ end }}
         {{ end }}
     </div>
 

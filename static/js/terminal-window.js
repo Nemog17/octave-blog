@@ -50,6 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
     show();
   });
 
+  if (btn.dataset.autoOpen === "true") {
+    show();
+  }
+
   closeBtn.addEventListener("click", hide);
   if (minimizeBtn) {
     minimizeBtn.addEventListener("click", hide);
