@@ -4,12 +4,6 @@
   params.delete('backend');
   const search = params.toString();
   const wsUrl = backend.replace(/^http/, 'ws') + '/ws' + (search ? '?' + search : '');
-  const authScript = document.getElementById('auth-script');
-  
-  function loadToken(callback) {
-    authScript.onload = callback;
-    authScript.src = backend + '/auth_token.js?t=' + Date.now();
-  }
   
   const outputEl = document.getElementById('output');
   const inputEl = document.getElementById('command-input');
@@ -49,7 +43,7 @@
       clearInterval(pingTimer);
       appendOutput('\n[conexión cerrada]\n');
       setTimeout(() => {
-        if (!open) loadToken(connect);
+        if (!open) connect();
       }, 1000);
     });
   }
@@ -68,7 +62,7 @@
     } else {
       queue.push(cmd);
       if(!open) {
-        loadToken(connect);
+        connect();
       }
     }
   }
@@ -98,9 +92,7 @@
   inputEl.addEventListener('blur', ()=> setTimeout(()=> inputEl.focus(), 0));
 
   window.addEventListener('load', ()=>{
-    loadToken(()=>{
-      connect();
-      inputEl.focus();
-    });
+    connect();
+    inputEl.focus();
   });
 })();
