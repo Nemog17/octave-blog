@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!iframeLoaded) {
       iframe.src =
         btn.dataset.url ||
-        "/console/?backend=https://octave-env.happyisland-2e46231f.eastus.azurecontainerapps.io";
+        "https://octave-env.happyisland-2e46231f.eastus.azurecontainerapps.io";
       iframeLoaded = true;
     }
     overlay.classList.remove("minimized");
