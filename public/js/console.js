@@ -67,7 +67,7 @@
       ws.send('0'+cmd+'\n');
     } else {
       queue.push(cmd);
-      if(!open
+      if(!open) {
         loadToken(connect);
       }
     }
