@@ -5,8 +5,12 @@
   const search = params.toString();
   const wsUrl = backend.replace(/^http/, 'ws') + '/ws' + (search ? '?' + search : '');
   const authScript = document.getElementById('auth-script');
-  authScript.src = backend + '/auth_token.js';
-
+  
+  function loadToken(callback) {
+    authScript.onload = callback;
+    authScript.src = backend + '/auth_token.js?t=' + Date.now();
+  }
+  
   const outputEl = document.getElementById('output');
   const inputEl = document.getElementById('command-input');
   let ws = null;
@@ -45,7 +49,7 @@
       clearInterval(pingTimer);
       appendOutput('\n[conexión cerrada]\n');
       setTimeout(() => {
-        if (!open) connect();
+        if (!open) loadToken(connect);
       }, 1000);
     });
   }
@@ -63,8 +67,8 @@
       ws.send('0'+cmd+'\n');
     } else {
       queue.push(cmd);
-      if(!open){
-        connect();
+      if(!open
+        loadToken(connect);
       }
     }
   }
@@ -94,7 +98,9 @@
   inputEl.addEventListener('blur', ()=> setTimeout(()=> inputEl.focus(), 0));
 
   window.addEventListener('load', ()=>{
-    connect();
-    inputEl.focus();
+    loadToken(()=>{
+      connect();
+      inputEl.focus();
+    });
   });
 })();
