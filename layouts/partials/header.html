@@ -28,7 +28,7 @@
         {{ with .Param "exercise" }}
         {{ if $terminalURL }}
         <p class="small">
-            <a href="#" id="terminal-button" class="terminal-button" data-url="{{ printf "%s/?arg=%s" $terminalURL . }}">/terminal</a>
+            <a href="#" id="terminal-button" class="terminal-button" data-url="{{ printf "/console/?backend=%s&arg=%s" $terminalURL . }}">/terminal</a>
         </p>
         {{ end }}
         {{ end }}
