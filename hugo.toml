@@ -1,6 +1,6 @@
 baseURL = 'https://polite-plant-054e8820f.6.azurestaticapps.net/'
-languageCode = 'en-us'
-title = 'My website'
+languageCode = 'es-es'
+title = 'Heidy Math'
 theme = 'typo'
 
 # Google analytics code
@@ -19,10 +19,11 @@ colorPalette = 'default'
 hideHeader = false
 
 # Intro on main page, content is markdown
-homeIntroTitle = 'Hi!'
+homeIntroTitle = 'Hola'
 homeIntroContent = """
-I am an Italian Software Engineer with a strong foundation in computer science and a passion for solving complex problems.
-I am interested in a range of topics, including algorithms, distributed systems, databases, and information retrieval.
+Mtra. Heidy M. Gómez
+
+La lógica te llevará desde A hasta B. La imaginación te llevará a todas partes (Albert Einstein)
 """
 
 # Collection to display on home
