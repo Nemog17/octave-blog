@@ -34,30 +34,7 @@
 }
 
 #terminal-container {
-  display: flex;
   height: calc(100% - 30px);
-}
-
-#variables-panel {
-  width: 200px;
-  min-width: 120px;
-  max-width: 50%;
-  overflow: auto;
-  background: #222;
-  color: #0f0;
-  font-family: monospace;
-  padding: 4px;
-}
-
-#drag-handle {
-  width: 5px;
-  cursor: ew-resize;
-  background: #444;
-}
-
-#console-panel {
-  flex-grow: 1;
-  overflow: hidden;
 }
 #terminal-header {
   cursor: grab;
