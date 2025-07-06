@@ -61,7 +61,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  closeBtn.addEventListener("click", hide);
+  function closeTerminal() {
+    iframe.src = "";
+    iframeLoaded = false;
+    hide();
+  }
+
+  closeBtn.addEventListener("click", closeTerminal);
   if (minimizeBtn) {
     minimizeBtn.addEventListener("click", hide);
   }
