@@ -20,33 +20,12 @@
     ws = new WebSocket(wsUrl, ['gotty']);
     ws.addEventListener('open', ()=>{
       open = true;
-      ws.send(
-        JSON.stringify({
-          Arguments: search ? '?' + search : '',
-          AuthToken: window.gotty_auth_token || ''
-        })
-      );
-      pingTimer = setInterval(() => {
-        if (ws.readyState === 1) ws.send('1');
-      }, 30000);
-      if (queue.length) {
-        queue.forEach((cmd) => ws.send('0' + cmd + '\n'));
-        queue = [];
-      }
-      if (callback) callback();
     });
     ws.addEventListener('message', (e)=>{
       const type = e.data[0];
       const data = e.data.slice(1);
       if(type==='0') appendOutput(atob(data));
     });
-    ws.addEventListener('close', () => {
-      open = false;
-      clearInterval(pingTimer);
-      appendOutput('\n[conexión cerrada]\n');
-      setTimeout(() => {
-        if (!open) connect();
-      }, 1000);
     });
   }
 
