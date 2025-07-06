@@ -5,12 +5,12 @@
   const search = params.toString();
   const wsUrl = backend.replace(/^http/, 'ws') + '/ws' + (search ? '?' + search : '');
   const authScript = document.getElementById('auth-script');
-
+  
   function loadToken(callback) {
     authScript.onload = callback;
     authScript.src = backend + '/auth_token.js?t=' + Date.now();
   }
-
+  
   const outputEl = document.getElementById('output');
   const inputEl = document.getElementById('command-input');
   let ws = null;
@@ -67,7 +67,7 @@
       ws.send('0'+cmd+'\n');
     } else {
       queue.push(cmd);
-      if(!open){
+      if(!open
         loadToken(connect);
       }
     }
