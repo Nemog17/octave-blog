@@ -1,6 +1,6 @@
 (function(){
   const params = new URLSearchParams(window.location.search);
-  const backend = params.get('backend') || 'https://octave-env.happyisland-2e46231f.eastus.azurecontainerapps.io';
+  const backend = params.get('backend') || 'https://octave-docker-eqcyefaxggbrhtcn.eastus2-01.azurewebsites.net';
   params.delete('backend');
   const search = params.toString();
   const wsUrl = backend.replace(/^http/, 'ws') + '/ws' + (search ? '?' + search : '');
