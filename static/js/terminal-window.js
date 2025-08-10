@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!iframeLoaded) {
       iframe.src =
         btn.dataset.url ||
-        "https://octave-env.happyisland-2e46231f.eastus.azurecontainerapps.io";
+        "https://octave-docker-eqcyefaxggbrhtcn.eastus2-01.azurewebsites.net";
       iframeLoaded = true;
     }
     overlay.classList.remove("minimized");
